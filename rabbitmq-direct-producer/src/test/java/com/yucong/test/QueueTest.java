@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.yucong.Sender;
+import com.yucong.Sender2;
 import com.yucong.SpringbootServerApplication;
 import com.yucong.message.LogMessage;
 
@@ -25,19 +26,15 @@ import com.yucong.message.LogMessage;
 public class QueueTest {
 
 	@Autowired
-	private Sender sender;
+	private Sender2 sender;
 	
 	/*
 	 * 测试消息队列
 	 */
 	@Test
 	public void testSend()throws Exception{
-		Long id = 1L;
 		
-		//while(true){
-			Thread.sleep(1000);
-			this.sender.send(new LogMessage(id,"test log", "error", "订单服务", new Date(), id));
-			id++;
-		//}
+		this.sender.sendOrderNo("order_no_8888");
+	
 	}
 }

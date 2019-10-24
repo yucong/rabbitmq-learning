@@ -42,4 +42,20 @@ public class Sender {
 		 */
 		this.rabbitAmqpTemplate.convertAndSend(this.exchange, this.routingkey, msg);
 	}
+	
+	/*
+	 * 发送消息的方法
+	 */
+	public void sendOrderNo(String orderNo){
+		/**
+		 * convertAndSend - 转换并发送消息的template方法。
+		 * 是将传入的普通java对象，转换为rabbitmq中需要的message类型对象，并发送消息到rabbitmq中。
+		 * 参数一：交换器名称。 类型是String
+		 * 参数二：路由键。 类型是String
+		 * 参数三：消息，是要发送的消息内容对象。类型是Object
+		 */
+		this.rabbitAmqpTemplate.convertAndSend(this.exchange, this.routingkey, orderNo);
+	}
+	
+	
 }
