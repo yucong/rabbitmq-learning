@@ -1,5 +1,8 @@
 package com.yucong;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,14 +21,7 @@ public class Sender {
 
 	@Autowired
 	private AmqpTemplate rabbitAmqpTemplate;
-	
-	// 交换器名称
-	@Value("${mq.config.exchange}")
-	private String exchange;
-	
-	// 路由键
-	@Value("${mq.config.queue.error.routing.key}")
-	private String routingkey;
+
 	
 	// 延迟时长
 	@Value("${mq.config.queue.delaytime}")
@@ -42,7 +38,11 @@ public class Sender {
 		 * 参数二：路由键。 类型是String
 		 * 参数三：消息，是要发送的消息内容对象。类型是Object
 		 */
-		this.rabbitAmqpTemplate.convertAndSend(this.exchange, this.routingkey, msg, message -> {
+		
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("生产消息时间：------------->:" + sf.format(new Date()));
+		System.out.println("延时时长：------------->:" + delayTime );
+		this.rabbitAmqpTemplate.convertAndSend(RabbitConsts.DEAD_EXCHANGE, RabbitConsts.DEAD_ROUTING_KEY, msg, message -> {
             message.getMessageProperties().setExpiration(String.valueOf(delayTime));
             return message;
         });

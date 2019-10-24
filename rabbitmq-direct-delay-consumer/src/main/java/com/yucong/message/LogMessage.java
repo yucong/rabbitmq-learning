@@ -1,6 +1,7 @@
 package com.yucong.message;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -32,8 +33,10 @@ public class LogMessage implements Serializable {
 	
 	@Override
 	public String toString() {
+		
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return "LogMessage [id=" + id + ", msg=" + msg + ", logLevel=" + logLevel + ", serviceType=" + serviceType
-				+ ", createTime=" + createTime + ", userId=" + userId + "]";
+				+ ", createTime=" + sf.format(createTime) + ", userId=" + userId + "]";
 	}
 	
 	public Long getId() {
