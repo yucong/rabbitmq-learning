@@ -13,7 +13,7 @@ import com.yucong.message.LogMessage;
 
 
 @Component
-@RabbitListener(queues = {"delay.queue"})
+@RabbitListener(queues = {RabbitConsts.DELAY_QUEUE})
 public class DelayConsumer {
 	
 	/**
