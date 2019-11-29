@@ -34,10 +34,13 @@ public class QueueTest {
 	public void testSend()throws Exception{
 		Long id = 1L;
 		
-		//while(true){
+		while(true){
 			Thread.sleep(1000);
 			this.sender.send(new LogMessage(id,"test log", "error", "订单服务", new Date(), id));
 			id++;
-		//}
+			if(id > 10) {
+				break;
+			}
+		}
 	}
 }

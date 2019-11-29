@@ -2,12 +2,12 @@ spring.application.name=direct-consumer
 
 server.port=8083
 
-spring.rabbitmq.host=112.74.181.95
+spring.rabbitmq.host=47.96.21.192
 spring.rabbitmq.port=5672
-spring.rabbitmq.username=syp
-spring.rabbitmq.password=6BvCepUS
-spring.rabbitmq.listener.simple.acknowledge-mode=manual
-#spring.rabbitmq.listener.acknowledge-mode=manual
+spring.rabbitmq.username=crm
+spring.rabbitmq.password=crm2019mq
+#spring.rabbitmq.listener.simple.acknowledge-mode=manual
+spring.rabbitmq.listener.acknowledge-mode=manual
 
 # 自定义配置。 配置交换器exchange、路由键routing-key、队列名称 queue name
 # 交换器名称
