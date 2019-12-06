@@ -32,8 +32,12 @@ public class QueueTest {
 	 */
 	@Test
 	public void testSend()throws Exception{
-		Long id = 1L;
-		this.sender.send(new LogMessage(id,"test log", "info", "订单服务", new Date(), id));
+		for(long i=1;i<11;i++) {
+			Long id = i;
+			this.sender.send(new LogMessage(id,"test log", "info", "订单服务", new Date(), id));
+		}
+		
+		
 		
 	
 	}
